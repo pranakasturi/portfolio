@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: Data Health &amp; Cleaning Automation Platform</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="case-study-page">
+  <article class="case-study-page">
+    <div class="container">
+      <header>
+        <h1>Data Health &amp; Cleaning Automation Platform</h1>
+        <p class="meta-tags"><strong>Project Type:</strong> Data Quality Automation · Data Analytics · Desktop Application Development</p>
+      </header>
+
+      <section>
+        <h2>Project Overview</h2>
+        <p>The Data Health &amp; Cleaning Automation Platform is a Python desktop application designed to help users inspect, clean, validate, and analyze CSV and Excel datasets through a structured workflow.</p>
+        <p>It combines data cleaning, configurable validation rules, before-and-after profiling, data quality scoring, batch processing, and report generation in one application.</p>
+      </section>
+
+      <section>
+        <h2>1. Problem Statement</h2>
+        <p>Business data often requires preparation before it can be used for analysis or management reporting. Spreadsheet files may contain duplicate records, missing values, inconsistent formatting, empty rows, or entries that do not meet expected validation rules.</p>
+        <p>Handling these issues manually can make data preparation repetitive and produce inconsistent results.</p>
+        <p>The application addresses this problem by providing a consistent process for identifying data quality issues, applying cleaning rules, validating records, and reviewing the results.</p>
+      </section>
+
+      <section>
+        <h2>2. Project Objectives</h2>
+        <p>The goal was to develop a desktop application that could:</p>
+        <ul>
+          <li>Automate common cleaning operations for CSV and Excel files.</li>
+          <li>Identify duplicates, missing values, empty structures, and formatting inconsistencies.</li>
+          <li>Apply configurable validation rules to check data against defined requirements.</li>
+          <li>Compare data profiles before and after cleaning.</li>
+          <li>Calculate data quality metrics and an overall health score.</li>
+          <li>Support individual files and batch processing.</li>
+          <li>Generate PDF and Excel reports and prepare cleaned data for downstream analysis.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Solution &amp; Architecture</h2>
+        <p>The application uses a modular design that separates the desktop interface from data processing, validation, profiling, and reporting logic.</p>
+
+        <h3>Core Components</h3>
+        <h4>Data Cleaning Engine</h4>
+        <p>Handles common data preparation tasks, including duplicate removal, empty-row and column removal, whitespace cleanup, and missing-value handling according to the configured rules.</p>
+
+        <h4>Validation Engine</h4>
+        <p>Checks datasets against configured validation rules. Rules are maintained in external JSON configuration files, allowing supported checks to be managed separately from the user interface.</p>
+
+        <h4>Data Profiling &amp; Health Scoring</h4>
+        <p>Calculates data quality metrics before and after processing, including missing values, completeness, duplicate records, and an overall quality score.</p>
+
+        <h4>Dashboard &amp; Reporting</h4>
+        <p>Presents processing information and quality metrics through the desktop interface. The application also supports generating PDF and Excel reports for reviewing results.</p>
+
+        <h4>Batch Processing &amp; Export</h4>
+        <p>Processes multiple files through a common workflow and supports exporting cleaned datasets for further analysis, including Power BI workflows.</p>
+      </section>
+
+      <section>
+        <h3>Application Interface</h3>
+        <figure class="figure-container">
+          <img src="../images/image1.webp" alt="Main dashboard displaying application metrics and processing information" width="800" height="400">
+          <figcaption class="figure-caption">Figure 1. Main dashboard displaying application metrics and processing information.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>4. End-to-End Workflow</h2>
+        <p>The application follows a structured process from importing data to reviewing and exporting the results.</p>
+        <pre>Input Files → Initial Profiling → Data Cleaning → Validation → Post-Cleaning Profiling → Results Review → Export</pre>
+
+        <h3>Step 1 — Import and Profile</h3>
+        <p>Load a CSV or Excel file and examine its structure and initial data quality.</p>
+        <figure class="figure-container">
+          <img src="../images/image2.webp" alt="Initial data profiling highlighting issues that may require cleaning or validation" width="800" height="400">
+          <figcaption class="figure-caption">Figure 2. Initial data profiling highlights issues that may require cleaning or validation.</figcaption>
+        </figure>
+
+        <h3>Step 2 — Clean and Validate</h3>
+        <p>Apply supported cleaning operations and check the processed dataset against the configured validation rules.</p>
+        <figure class="figure-container">
+          <img src="../images/image3.webp" alt="Data quality analysis identifying issues requiring attention" width="800" height="400">
+          <figcaption class="figure-caption">Figure 3. Post-cleaning data quality analysis.</figcaption>
+        </figure>
+
+        <h3>Step 3 — Review Results</h3>
+        <p>Compare before-and-after metrics, review the quality score, and examine the results of the processing workflow.</p>
+        <figure class="figure-container">
+          <img src="../images/image4.webp" alt="Post-cleaning data quality metrics for reviewing the processed dataset" width="800" height="400">
+          <figcaption class="figure-caption">Figure 4. Post-cleaning Batch Cleaning Dashboard.</figcaption>
+        </figure>
+
+        <h3>Step 4 — Export</h3>
+        <p>Save the processed data and generate supported PDF or Excel reports for further review and analysis.</p>
+      </section>
+
+      <section>
+        <h2>5. Key Features</h2>
+        <table>
+          <thead>
+            <tr><th>Area</th><th>Features</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Data cleaning</td><td>Duplicate removal, empty-row and column removal, whitespace cleanup, and missing-value handling.</td></tr>
+            <tr><td>Validation</td><td>Configurable rules, required-field checks, unique-key checks, and numeric range checks where configured.</td></tr>
+            <tr><td>Data profiling</td><td>Before-and-after profiles, missing-value metrics, completeness analysis, and duplicate counts.</td></tr>
+            <tr><td>Quality assessment</td><td>Overall data quality score and processing results.</td></tr>
+            <tr><td>Processing</td><td>Single-file and batch processing.</td></tr>
+            <tr><td>Reporting</td><td>PDF reports, Excel reports, and data quality summaries.</td></tr>
+            <tr><td>Integration</td><td>JSON-based rule configuration and Power BI-oriented data export.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>6. Technology Stack</h2>
+        <table>
+          <thead>
+            <tr><th>Technology</th><th>Role in the application</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Python</strong></td><td>Application logic and processing workflows.</td></tr>
+            <tr><td><strong>PySide6</strong></td><td>Desktop user interface.</td></tr>
+            <tr><td><strong>Pandas</strong></td><td>Data loading, transformation, and profiling.</td></tr>
+            <tr><td><strong>SQLite</strong></td><td>Local metadata or processing history, where used.</td></tr>
+            <tr><td><strong>Matplotlib</strong></td><td>Data quality charts and visualizations.</td></tr>
+            <tr><td><strong>ReportLab</strong></td><td>PDF report generation.</td></tr>
+            <tr><td><strong>JSON</strong></td><td>External validation-rule configuration.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>7. Project Outcomes</h2>
+        <p>The application brings common data preparation and quality-checking tasks into a single workflow.</p>
+        <p>Its practical benefits include:</p>
+        <ul>
+          <li><strong>Consistent processing:</strong> Apply supported cleaning operations through a repeatable workflow.</li>
+          <li><strong>Improved visibility:</strong> Identify data quality issues before using datasets for downstream reporting.</li>
+          <li><strong>Configurable validation:</strong> Maintain supported validation rules outside the interface code.</li>
+          <li><strong>Easier review:</strong> Compare quality metrics before and after cleaning.</li>
+          <li><strong>Structured reporting:</strong> Produce reports that help users inspect processing results.</li>
+          <li><strong>Batch processing:</strong> Apply the supported workflow to multiple files rather than handling every file individually.</li>
+        </ul>
+        <p>Processing-time improvements and reductions in data errors have not been quantified here. These can be assessed through benchmark testing with representative datasets.</p>
+      </section>
+
+      <section>
+        <h2>8. Future Enhancements</h2>
+        <p>Potential areas for further development include:</p>
+        <ul>
+          <li>Additional industry-specific validation rules.</li>
+          <li>Scheduled processing and automatic folder monitoring.</li>
+          <li>Additional database connectors for direct data ingestion.</li>
+          <li>Expanded data quality trend analysis across processing runs.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Conclusion</h2>
+        <p>The Data Health &amp; Cleaning Automation Platform demonstrates how Python, data processing libraries, and desktop application development can be combined to create a structured data quality workflow.</p>
+        <p>The project brings data cleaning, validation, profiling, quality assessment, and reporting together, providing a foundation for more reliable downstream analysis and business reporting.</p>
+      </section>
+    </div>
+  </article>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: Monthly MIS Automation Platform</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="case-study-page">
+  <article class="case-study-page">
+    <div class="container">
+      <header>
+        <p class="meta-tags">Portfolio Project | MIS Automation | Business Intelligence | Data Analytics</p>
+        <h1>Monthly MIS Automation Platform</h1>
+      </header>
+
+      <section>
+        <h2>Project Overview</h2>
+        <p>The Monthly MIS Automation Platform is a Python-based desktop application designed to organize and automate recurring Management Information System (MIS) reporting workflows.</p>
+        <p>It brings client management, data-source mapping, data quality checks, configurable KPI calculations, execution tracking, scheduling, and report management into a single application.</p>
+        <p>The platform is designed for workflows where financial and operational data arrives in multiple CSV or Excel files and must be processed consistently to prepare management information.</p>
+      </section>
+
+      <section>
+        <h2>1. Problem Statement</h2>
+        <p>Many small and medium-sized businesses and accounting practices rely on spreadsheets to prepare monthly management reports. As reporting requirements grow, managing these processes manually can become time-consuming and difficult to maintain consistently.</p>
+        <p>Common challenges include:</p>
+        <ul>
+          <li><strong>Fragmented data sources:</strong> Relevant information is stored across multiple CSV and Excel files.</li>
+          <li><strong>Repetitive reporting tasks:</strong> Data preparation, KPI calculations, and report compilation must be repeated for each reporting cycle.</li>
+          <li><strong>Data quality issues:</strong> Missing values, duplicate records, and unexpected column structures can affect the reliability of calculations.</li>
+          <li><strong>Inconsistent KPI calculations:</strong> Different reporting files or manual processes may use inconsistent calculation methods.</li>
+          <li><strong>Limited execution tracking:</strong> Without a central record of previous runs, reviewing failures and checking earlier processing results can be difficult.</li>
+          <li><strong>Growing reporting requirements:</strong> Managing multiple clients, data sources, and MIS configurations becomes more complex as the workload increases.</li>
+        </ul>
+        <p>The application addresses these challenges by organizing the reporting process into a configurable, repeatable workflow.</p>
+      </section>
+
+      <section>
+        <h2>2. Project Objectives</h2>
+        <p>The main objective was to develop a desktop application that manages the MIS workflow from data loading and validation through KPI calculation, execution tracking, and report management.</p>
+        <p>The key objectives were to:</p>
+        <ul>
+          <li>Manage clients and their associated data sources.</li>
+          <li>Configure MIS definitions, source mappings, and required KPIs.</li>
+          <li>Load structured data from CSV and Excel files.</li>
+          <li>Check data schemas and quality before KPI processing.</li>
+          <li>Calculate configured business metrics through a reusable KPI engine.</li>
+          <li>Record execution details and processing status in a local database.</li>
+          <li>Configure recurring MIS jobs through a scheduler.</li>
+          <li>Provide a central dashboard and reports area for reviewing application activity.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Solution &amp; Application Architecture</h2>
+        <p>The application follows a modular <strong>Repository-Service architecture</strong>, separating the user interface, business logic, database access, and supporting workflows.</p>
+
+        <h3>Core Components</h3>
+        <h4>Client &amp; Data Hub Management</h4>
+        <p>Maintains client records and data-source information. It provides the foundation for associating incoming files with the appropriate MIS configuration.</p>
+
+        <h4>MIS Configuration</h4>
+        <p>Allows users to configure an MIS definition, map relevant data sources, and associate the KPIs required for a reporting workflow.</p>
+
+        <h4>Data Loading &amp; Health Checks</h4>
+        <p>Loads supported CSV and Excel files and checks their structure and quality before calculation. Checks include schema compliance, missing values, duplicate records, and configured validation requirements.</p>
+
+        <h4>KPI Calculation Engine</h4>
+        <p>Processes configured KPIs using reusable calculation logic. Depending on the configured KPI and available data, calculations can include totals, counts, averages, minimum and maximum values, distinct counts, percentages, ratios, and supported formulas.</p>
+
+        <h4>MIS Execution &amp; History</h4>
+        <p>Coordinates the configured processing workflow and records execution information, including status and associated MIS details, in SQLite. This provides a record that can be reviewed after a run.</p>
+
+        <h4>Scheduler &amp; Reports Center</h4>
+        <p>Provides interfaces for configuring recurring MIS jobs and managing generated report records and related execution information.</p>
+
+        <h4>Dashboard</h4>
+        <p>Brings together high-level application information, including active MIS configurations, data sources, report information, and recent execution activity.</p>
+      </section>
+
+      <section>
+        <h3>Application Interface</h3>
+        <figure class="figure-container">
+          <img src="../images/mis.webp" alt="Page displaying MIS activity and application-level information" width="800" height="400">
+          <figcaption class="figure-caption">Figure 1. Main dashboard displaying MIS activity and application-level information.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>4. End-to-End Workflow</h2>
+        <p>The application follows a structured sequence from configuration to reporting.</p>
+        <pre>Client Setup → Data Source Mapping → MIS Configuration → Data Loading → Data Health Checks → KPI Calculation → Execution History → Reports &amp; Dashboard</pre>
+
+        <h3>Step 1: Configure the Client and MIS</h3>
+        <p>Create the client record, define the MIS workflow, select the required data sources, and configure the relevant KPIs.</p>
+
+        <h3>Step 2: Load the Data</h3>
+        <p>Read the selected CSV and Excel files through the data-loading service and prepare the datasets for validation and processing.</p>
+
+        <h3>Step 3: Check Data Quality</h3>
+        <p>Verify the expected data structure and run the configured health checks. If the data does not satisfy the application's quality requirements, processing can be stopped rather than continuing with unsuitable input.</p>
+
+        <h3>Step 4: Calculate Business KPIs</h3>
+        <p>Process the validated datasets and calculate the KPIs associated with the MIS configuration.</p>
+
+        <h3>Step 5: Record the Execution</h3>
+        <p>Store execution details and status in the SQLite-backed history so that previous runs can be reviewed.</p>
+
+        <h3>Step 6: Review Reports and Activity</h3>
+        <p>Use the dashboard, execution history, and Reports Center to review available application information and generated reporting artifacts.</p>
+      </section>
+
+      <section>
+        <h2>5. Key Features</h2>
+        <table>
+          <thead>
+            <tr><th>Feature</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Client Management</strong></td><td>Maintains client records for organizing MIS workflows.</td></tr>
+            <tr><td><strong>Data Hub</strong></td><td>Registers data sources and associates them with MIS configurations.</td></tr>
+            <tr><td><strong>MIS Configuration</strong></td><td>Defines reporting workflows, data mappings, and required KPIs.</td></tr>
+            <tr><td><strong>Data Health Checks</strong></td><td>Checks data structure, missing values, duplicates, and configured validation rules.</td></tr>
+            <tr><td><strong>KPI Calculation Engine</strong></td><td>Calculates configured business metrics through reusable logic.</td></tr>
+            <tr><td><strong>MIS Execution</strong></td><td>Runs the configured data-processing and KPI workflow.</td></tr>
+            <tr><td><strong>Execution History</strong></td><td>Stores execution details and statuses for later review.</td></tr>
+            <tr><td><strong>Scheduler</strong></td><td>Provides configuration for recurring MIS jobs.</td></tr>
+            <tr><td><strong>Reports Center</strong></td><td>Organizes report records and related output information.</td></tr>
+            <tr><td><strong>Dashboard</strong></td><td>Summarizes key application information and recent activity.</td></tr>
+            <tr><td><strong>Local Database</strong></td><td>Uses SQLite to persist application configuration, metadata, and execution-related records.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>6. Business Applications &amp; Potential Value</h2>
+        <p>The platform is designed to support more consistent and manageable reporting workflows.</p>
+
+        <h3>Recurring management reporting</h3>
+        <p>A configured workflow can be reused for subsequent reporting cycles, reducing the need to recreate the same process manually each time.</p>
+
+        <h3>Data quality before calculation</h3>
+        <p>Pre-processing checks help identify unsuitable data before it is used in KPI calculations, making data issues easier to investigate.</p>
+
+        <h3>Consistent KPI definitions</h3>
+        <p>Reusable calculation logic helps maintain consistent definitions for metrics such as revenue, cost of goods sold, gross profit, gross margin percentage, and outstanding receivables, where the necessary source data is available.</p>
+
+        <h3>Execution traceability</h3>
+        <p>Stored execution records help users review previous runs and identify their processing status when investigating reporting issues.</p>
+
+        <h3>Multi-client workflow organization</h3>
+        <p>Client records, source mappings, and MIS configurations provide a structured way to organize reporting requirements across multiple clients.</p>
+
+        <h3>A foundation for further analytics</h3>
+        <p>Structured KPI results and historical execution information can support future additions such as period comparisons, variance analysis, and data quality trends.</p>
+
+        <p><em>Note: Actual time savings, error reductions, and financial benefits should be measured through testing with representative datasets before being presented as quantified project outcomes.</em></p>
+      </section>
+
+      <section>
+        <h2>7. Technology Stack</h2>
+        <table>
+          <thead>
+            <tr><th>Technology</th><th>Role in the Application</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Python</strong></td><td>Core business logic and application workflows.</td></tr>
+            <tr><td><strong>PySide6</strong></td><td>Desktop interface, navigation, configuration forms, and data tables.</td></tr>
+            <tr><td><strong>Pandas</strong></td><td>Loading, transforming, and processing tabular data.</td></tr>
+            <tr><td><strong>SQLite</strong></td><td>Local persistence for client records, MIS configuration, mappings, execution history, and report metadata.</td></tr>
+            <tr><td><strong>Matplotlib</strong></td><td>Charts and visual analytics where implemented.</td></tr>
+            <tr><td><strong>ReportLab</strong></td><td>PDF report generation where implemented.</td></tr>
+            <tr><td><strong>JSON</strong></td><td>External configuration for supported validation and KPI rules.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>8. Future Enhancements</h2>
+        <p>The following are potential extensions beyond the currently implemented workflow:</p>
+        <ul>
+          <li><strong>Period-over-Period Analysis:</strong> Compare KPIs across reporting periods and highlight significant variances.</li>
+          <li><strong>Advanced Analytics:</strong> Introduce trend analysis, anomaly detection, and forecasting using suitable historical data.</li>
+          <li><strong>Automated Report Distribution:</strong> Add scheduled email delivery and integrations with supported storage services.</li>
+          <li><strong>Access Control:</strong> Introduce role-based permissions and stronger controls for managing access to client information.</li>
+          <li><strong>Additional Data Integrations:</strong> Connect directly to accounting systems, external SQL databases, and other business data sources.</li>
+          <li><strong>Expanded KPI Library:</strong> Add industry-specific metrics and more flexible KPI configuration options.</li>
+          <li><strong>Data Quality Trends:</strong> Track recurring data issues and quality scores across successive reporting runs.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Conclusion</h2>
+        <p>The Monthly MIS Automation Platform brings client and data-source management, MIS configuration, data validation, KPI calculations, execution history, scheduling, and report management into a structured desktop application.</p>
+        <p>The project demonstrates how Python, PySide6, Pandas, and SQLite can be combined to build a modular reporting system that supports recurring business workflows and provides a foundation for more advanced management analytics.</p>
+      </section>
+    </div>
+  </article>
+</body>
+</html>
